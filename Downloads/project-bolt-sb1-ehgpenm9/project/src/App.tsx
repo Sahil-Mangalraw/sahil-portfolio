@@ -12,9 +12,15 @@ function App() {
     // Smooth scrolling for anchor links
     document.documentElement.style.scrollBehavior = 'smooth';
     
-    // Add custom CSS animations
+    // Add custom CSS animations with modern color palette
     const style = document.createElement('style');
     style.textContent = `
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+      
+      * {
+        font-family: 'Inter', sans-serif;
+      }
+      
       @keyframes fade-in {
         from {
           opacity: 0;
@@ -26,36 +32,45 @@ function App() {
         }
       }
       
-      @keyframes fade-in-delay-1 {
+      @keyframes slide-in-left {
         from {
           opacity: 0;
-          transform: translateY(30px);
+          transform: translateX(-50px);
         }
         to {
           opacity: 1;
-          transform: translateY(0);
+          transform: translateX(0);
         }
       }
       
-      @keyframes fade-in-delay-2 {
+      @keyframes slide-in-right {
         from {
           opacity: 0;
-          transform: translateY(30px);
+          transform: translateX(50px);
         }
         to {
           opacity: 1;
-          transform: translateY(0);
+          transform: translateX(0);
         }
       }
       
-      @keyframes fade-in-delay-3 {
+      @keyframes scale-in {
         from {
           opacity: 0;
-          transform: translateY(30px);
+          transform: scale(0.8);
         }
         to {
           opacity: 1;
-          transform: translateY(0);
+          transform: scale(1);
+        }
+      }
+      
+      @keyframes glow {
+        0%, 100% {
+          box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+        50% {
+          box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
         }
       }
       
@@ -63,20 +78,27 @@ function App() {
         animation: fade-in 0.8s ease-out forwards;
       }
       
-      .animate-fade-in-delay-1 {
-        animation: fade-in-delay-1 0.8s ease-out 0.2s forwards;
-        opacity: 0;
+      .animate-slide-in-left {
+        animation: slide-in-left 0.8s ease-out forwards;
       }
       
-      .animate-fade-in-delay-2 {
-        animation: fade-in-delay-2 0.8s ease-out 0.4s forwards;
-        opacity: 0;
+      .animate-slide-in-right {
+        animation: slide-in-right 0.8s ease-out forwards;
       }
       
-      .animate-fade-in-delay-3 {
-        animation: fade-in-delay-3 0.8s ease-out 0.6s forwards;
-        opacity: 0;
+      .animate-scale-in {
+        animation: scale-in 0.6s ease-out forwards;
       }
+      
+      .animate-glow {
+        animation: glow 2s ease-in-out infinite;
+      }
+      
+      .stagger-1 { animation-delay: 0.1s; }
+      .stagger-2 { animation-delay: 0.2s; }
+      .stagger-3 { animation-delay: 0.3s; }
+      .stagger-4 { animation-delay: 0.4s; }
+      .stagger-5 { animation-delay: 0.5s; }
       
       .line-clamp-3 {
         display: -webkit-box;
@@ -89,22 +111,47 @@ function App() {
         scroll-behavior: smooth;
       }
       
-      /* Custom scrollbar */
+      /* Modern scrollbar */
       ::-webkit-scrollbar {
         width: 8px;
       }
       
       ::-webkit-scrollbar-track {
-        background: #f1f1f1;
+        background: #1e293b;
       }
       
       ::-webkit-scrollbar-thumb {
-        background: linear-gradient(45deg, #68bbe3, #0e86d4);
+        background: linear-gradient(45deg, #3B82F6, #1e40af);
         border-radius: 4px;
       }
       
       ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(45deg, #055c9d, #003060);
+        background: linear-gradient(45deg, #1e40af, #1e3a8a);
+      }
+      
+      /* Glassmorphism effect */
+      .glass {
+        background: rgba(30, 41, 59, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      /* Hover effects */
+      .hover-lift {
+        transition: all 0.3s ease;
+      }
+      
+      .hover-lift:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+      
+      /* Gradient text */
+      .gradient-text {
+        background: linear-gradient(135deg, #3B82F6, #F59E0B);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
     `;
     document.head.appendChild(style);
@@ -115,7 +162,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App bg-[#0f172a] text-[#f1f5f9] min-h-screen">
       <Hero />
       <About />
       <Skills />

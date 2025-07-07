@@ -1,8 +1,8 @@
 import React from 'react';
-import { Github, Linkedin, Mail, Phone, Heart } from 'lucide-react';
+import { Github, Linkedin, Mail, Phone, Heart, ExternalLink } from 'lucide-react';
 
 const Footer = () => {
-  const scrollToSection = (sectionId) => {
+  const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -41,21 +41,21 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-[#1F2937] text-white">
+    <footer className="bg-[#0f172a] text-[#f1f5f9] border-t border-[#475569]">
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid md:grid-cols-3 gap-8">
           {/* Logo & Name Section */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-gradient-to-r from-[#68bbe3] to-[#0e86d4] rounded-full flex items-center justify-center">
+              <div className="w-12 h-12 bg-gradient-to-r from-[#3B82F6] to-[#F59E0B] rounded-full flex items-center justify-center">
                 <span className="text-white font-bold text-xl">SV</span>
               </div>
               <div>
-                <h3 className="text-xl font-bold">Sahil Verma</h3>
-                <p className="text-gray-400">Linux & AI Enthusiast</p>
+                <h3 className="text-xl font-bold text-[#f1f5f9]">Sahil Verma</h3>
+                <p className="text-[#94a3b8]">Linux & AI Enthusiast</p>
               </div>
             </div>
-            <p className="text-gray-400 text-sm">
+            <p className="text-[#94a3b8] text-sm leading-relaxed">
               Building automation-driven solutions using Linux, Cloud, and AI technologies. 
               Passionate about DevOps, cloud computing, and innovative software development.
             </p>
@@ -63,13 +63,13 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+            <h4 className="text-lg font-semibold mb-4 text-[#f1f5f9]">Quick Links</h4>
             <nav className="space-y-2">
               {quickLinks.map((link) => (
                 <button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
-                  className="block text-gray-400 hover:text-[#3B82F6] transition duration-200 text-left"
+                  className="block text-[#94a3b8] hover:text-[#3B82F6] transition duration-200 text-left hover-lift"
                 >
                   {link.name}
                 </button>
@@ -79,13 +79,15 @@ const Footer = () => {
 
           {/* Social Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Connect With Me</h4>
+            <h4 className="text-lg font-semibold mb-4 text-[#f1f5f9]">Connect With Me</h4>
             <div className="space-y-3">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
                   href={social.href}
-                  className="flex items-center gap-3 text-gray-400 hover:text-[#3B82F6] transition duration-200 group"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-[#94a3b8] hover:text-[#3B82F6] transition duration-200 group"
                 >
                   <div className="group-hover:scale-110 transition duration-200">
                     {social.icon}
@@ -98,7 +100,9 @@ const Footer = () => {
             {/* DockerHub Link */}
             <a
               href="https://hub.docker.com/u/sahilmangalraw"
-              className="flex items-center gap-3 text-gray-400 hover:text-[#3B82F6] transition duration-200 group mt-3"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 text-[#94a3b8] hover:text-[#3B82F6] transition duration-200 group mt-3"
             >
               <div className="group-hover:scale-110 transition duration-200">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -112,11 +116,11 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-700 mt-8 pt-8 text-center">
-          <p className="text-gray-400 text-sm flex items-center justify-center gap-2">
-            © 2025 Sahil Verma. All rights reserved. Made with 
+        <div className="border-t border-[#475569] mt-8 pt-8 text-center">
+          <p className="text-[#94a3b8] text-sm flex items-center justify-center gap-2">
+            © 2025 Sahil Verma. All rights reserved. Built with 
             <Heart size={16} className="text-red-500 animate-pulse" /> 
-            and lots of coffee ☕
+            + 💙
           </p>
         </div>
       </div>
